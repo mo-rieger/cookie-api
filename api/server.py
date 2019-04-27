@@ -4,6 +4,10 @@ import scrape_schema_recipe
 
 app = Flask(__name__)
 
+@app.route("/", methods=["GET"])
+def info():
+    return 'This is the info route to the mr-cookie api.'
+
 #answer question to a recipe with allennlp machine comprehension model
 @app.route("/question", methods=["POST"])
 def answer_question():
@@ -20,11 +24,9 @@ def get_recipe():
     url = request.args.get('url')
     recipe_list = scrape_schema_recipe.scrape_url(url)
     if len(recipe_list) < 1:
-        abort(Response("Sorry couldn't find any recipe on that page."))
+        abort(Response("Sorry couldn't find a recipe on this page."))
     else:
         return jsonify(recipe_list[0])
 
 if __name__ == '__main__':
-    app.debug = True
-     port = int(os.environ.get("PORT", 5000))
-     app.run(host='0.0.0.0', port=port)
+    app.run(host='127.0.0.1', port=8080, debug=True)
