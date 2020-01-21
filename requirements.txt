@@ -110,7 +110,7 @@ tqdm==4.28.1
 ujson==1.35
 Unidecode==1.0.23
 urllib3==1.24.1
-validators==0.12.4
+validators==0.12.6
 w3lib==1.19.0
 wcwidth==0.1.7
 webencodings==0.5.1
